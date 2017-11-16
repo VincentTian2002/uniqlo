@@ -1,4 +1,5 @@
-from constant.commonconst import CommonConst
+import os
+from demo.constant.commonconst import CommonConst
 
 
 class PropertiesRead(object):
@@ -8,9 +9,10 @@ class PropertiesRead(object):
     def get_test_data_from_properties_file(self, file_name):
         test_data = {}
         file_path = self.get_test_data_file(file_name)
+        # file_path = os.path.realpath('test.properties')
+        lines = open(os.path.realpath(file_path))
         try:
-            f = open(file_path)
-            for line in f:
+            for line in lines:
                 line = line.replace('\n', '')
                 if line.startswith('#') or line == '':
                     continue
@@ -18,12 +20,12 @@ class PropertiesRead(object):
                 if not (all(pattern) and pattern):
                     raise Exception('test data: "{}" is not the right format!'.format(line))
                 test_data[pattern[0]] = pattern[1]
-        except IOError as e:
-            e.message
         finally:
-            f.close()
+            lines.close()
         return test_data
 
     def get_test_data_file(self, file_name):
-        return '%s%s' % (self.constant.TEST_DATA_PATH, file_name.strip())
-
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        combine_path = '%s/%s' % (CommonConst.TEST_DATA_PATH, file_name)
+        data_file_path = os.path.join(os.path.dirname(dir_path), combine_path)
+        return data_file_path

@@ -1,6 +1,7 @@
-import os, time
+import os
+import time
 from selenium import webdriver
-from constant.commonconst import CommonConst
+from demo.constant.commonconst import CommonConst
 from selenium.webdriver.support.select import Select
 
 
@@ -23,7 +24,7 @@ class WebDriverFunc(object):
         elif key == 'xpath':
             element = self._driver.find_element_by_xpath(value)
         else:
-            raise Exception('wrong By')
+            raise Exception('wrong By!')
         return element
 
     def locate_elements(self, locator):
@@ -113,6 +114,7 @@ class WebDriverFunc(object):
             self._driver = webdriver.Chrome(driver_path)
         else:
             raise Exception('wrong browser type!')
+        self._driver.maximize_window()
 
     def open_url(self, url):
         self._driver.get(url)
@@ -129,8 +131,12 @@ class WebDriverFunc(object):
         element = self.locate_element(locator)
         return element.get_attribute(attr)
 
-    @staticmethod
-    def scroll_to_element(element):
-        flag = element.location_once_scrolled_into_view()
-        if flag is None:
-            raise Exception('the element is not visible!')
+    def scroll_to_element(self, element):
+        self._driver.execute_script('arguments[0].scrollIntoView();', element)
+    #     flag = element.location_once_scrolled_into_view()
+    #     if flag is None:
+    #         raise Exception('the element is not visible!')
+
+    def click_element_by_js(self, locator):
+        ele = self.locate_element(locator)
+        self._driver.execute_script('$(arguments[0]).click()', ele)

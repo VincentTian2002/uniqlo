@@ -1,7 +1,7 @@
 import time
 from robot.api import logger
-from constant.page_locator.productdetailspage import ProductDetailsPage
-from constant.colorcode import ColorCode
+from demo.constant.page_locator.productdetailspage import ProductDetailsPage
+from demo.constant.colorcode import ColorCode
 
 
 class EditProductDetails(object):
@@ -17,6 +17,7 @@ class EditProductDetails(object):
             logger.error('product image loaded failed!')
 
     def select_product_color(self, color):
+        self.driver.click(self.product_details_page.TEXT_SEARCH)
         loc_color = self.product_details_page.PRODUCT_COLOR.format(color.upper())
         if self.driver.element_is_exist(loc_color):
             logger.info('found locator for color: %s.' % color.upper())
@@ -35,10 +36,11 @@ class EditProductDetails(object):
 
     def select_product_size(self, size):
         loc_size = self.product_details_page.PRODUCT_SIZE.format(size.upper())
+        self.driver.click_element_by_js(loc_size)
         self.driver.click(loc_size)
 
     def select_quantity_by_value(self, quantity):
-        self.driver.select_from_drop_down_list(value=quantity)
+        self.driver.select_from_drop_down_list(self.product_details_page.PRODUCT_QUANTITY_SELECTION, value=quantity)
 
     def click_add_to_cart_btn(self):
         flag = self.driver.element_is_enabled(self.product_details_page.ADD_TO_CART_BUTTON)

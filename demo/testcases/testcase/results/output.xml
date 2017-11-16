@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20171115 21:18:53.803" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="F:\vincent\auto_fr\demo\testcases\testcase\case.robot" id="s1" name="Case">
+<test id="s1-t1" name="case1">
+<kw type="setup" name="Get Test Data" library="demo.workflow.baseworkflow.BaseWorkFlow">
+<arguments>
+<arg>test.properties</arg>
+</arguments>
+<status status="PASS" endtime="20171115 21:18:54.131" starttime="20171115 21:18:54.115"></status>
+</kw>
+<kw name="Customer Open Uniqlo" library="demo.workflow.baseworkflow.BaseWorkFlow">
+<msg timestamp="20171115 21:18:58.826" level="INFO">opened ie browser!</msg>
+<status status="PASS" endtime="20171115 21:19:42.045" starttime="20171115 21:18:54.131"></status>
+</kw>
+<kw name="Customer Select Product" library="demo.workflow.baseworkflow.BaseWorkFlow">
+<msg timestamp="20171115 21:19:52.941" level="INFO">selected product type successfully!</msg>
+<status status="PASS" endtime="20171115 21:21:21.956" starttime="20171115 21:19:42.045"></status>
+</kw>
+<kw name="Customer Edit Product Details" library="demo.workflow.baseworkflow.BaseWorkFlow">
+<msg timestamp="20171115 21:21:22.018" level="INFO">product image loaded successful!</msg>
+<msg timestamp="20171115 21:21:23.188" level="INFO">found locator for color: RED.</msg>
+<msg timestamp="20171115 21:21:24.374" level="INFO">color:RED, id:15</msg>
+<msg timestamp="20171115 21:22:35.654" level="INFO">add to cart button is enabled! clicked this button.</msg>
+<status status="PASS" endtime="20171115 21:22:35.654" starttime="20171115 21:21:21.956"></status>
+</kw>
+<doc>add one product into cart and assert product details in cart.</doc>
+<tags>
+<tag>CART</tag>
+</tags>
+<status status="PASS" endtime="20171115 21:22:35.654" critical="yes" starttime="20171115 21:18:54.115"></status>
+</test>
+<status status="PASS" endtime="20171115 21:22:35.654" starttime="20171115 21:18:53.819"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">CART</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Case" pass="1">Case</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,8 +1,8 @@
-from util.webdriverfunc import WebDriverFunc
-from util.propertiesread import PropertiesRead
-from subflow.openbrowser import OpenBrowser
-from subflow.selectproduct import SelectProduct
-from subflow.editproductdetails import EditProductDetails
+from demo.util.webdriverfunc import WebDriverFunc
+from demo.util.propertiesread import PropertiesRead
+from demo.subflow.openbrowser import OpenBrowser
+from demo.subflow.selectproduct import SelectProduct
+from demo.subflow.editproductdetails import EditProductDetails
 
 
 class BaseWorkFlow(object):

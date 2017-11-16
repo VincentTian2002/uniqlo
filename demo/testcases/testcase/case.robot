@@ -5,6 +5,7 @@ Library     demo.workflow.baseworkflow.BaseWorkFlow
 case1
     [Documentation]     add one product into cart and assert product details in cart.
     [Tags]  CART
-    [Setup]  Get Test Data  'abc'
-    Open Uniqlo
-    Select Product
+    [Setup]  Get Test Data  test.properties
+    Customer Open Uniqlo
+    Customer Select Product
+    Customer Edit Product Details
